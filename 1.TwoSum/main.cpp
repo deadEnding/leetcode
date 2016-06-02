@@ -12,10 +12,10 @@ public:
         vector<int> indices;
 
         for (vector<int>::size_type ix = 0; ix < nums.size(); ++ix) {
-            if (m.find(nums[ix]) == m.end()) {
-                m[target - nums[ix]] = ix;
+            if (m.find(target - nums[ix]) == m.end()) {
+                m[nums[ix]] = ix;
             } else {
-                indices.push_back(m[nums[ix]]);
+                indices.push_back(m[target - nums[ix]]);
                 indices.push_back(ix);
                 break;
             }
