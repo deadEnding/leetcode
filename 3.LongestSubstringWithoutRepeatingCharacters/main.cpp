@@ -16,7 +16,8 @@ public:
         memset(charIndex, -1, sizeof(charIndex));   // 初始化数组
 
         for (string::size_type ix = 0; ix != s.size(); ++ix) {
-            if (charIndex[s[ix]] == -1 || charIndex[s[ix]] < ix - curLen) {
+            // if (charIndex[s[ix]] == -1 || charIndex[s[ix]] < ix - curLen) {
+            if (charIndex[s[ix]] < int(ix - curLen)) {
                 curLen++;
             } else {
                 curLen = ix - charIndex[s[ix]];
