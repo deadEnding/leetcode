@@ -11,10 +11,11 @@ public:
         if (nums.size() < 3) {
             return result;
         }
-        const int target = 0;
-        sort(nums.begin(), nums.end());
 
+        sort(nums.begin(), nums.end());
+        const int target = 0;
         vector<int>::iterator last = nums.end();
+
         for(vector<int>::iterator i = nums.begin(); i < last - 2; ++i) {
             if (i > nums.begin() && *(i-1) == *i)
                 continue;
