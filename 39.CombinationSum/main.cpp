@@ -7,7 +7,7 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
-        sort(candidates.begin(), candidates.end());\
+        sort(candidates.begin(), candidates.end());
         vector<int> path;
         combine(candidates, 0, target, path);
         return result;
