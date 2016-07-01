@@ -17,9 +17,8 @@ private:
     vector<vector<int> > result;
 
     void combine(vector<int>& candidates, int ix, int remain, vector<int>& path) {
-        if (remain <= 0) {
-            if (remain == 0)
-                result.push_back(path);
+        if (remain == 0) {
+            result.push_back(path);
             return;
         }
 
