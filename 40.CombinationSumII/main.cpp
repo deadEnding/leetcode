@@ -9,7 +9,7 @@ public:
     vector<vector<int> > combinationSum2(vector<int>& candidates, int target) {
         sort(candidates.begin(), candidates.end());
         vector<int> path;
-        combine(candidates, -1, target, path);
+        combine(candidates, 0, target, path);
         return result;
     }
 
@@ -22,12 +22,12 @@ private:
             return;
         }
 
-        for (int i = ix + 1; i < candidates.size(); ++i) {
+        for (int i = ix; i < candidates.size(); ++i) {
             if (remain < candidates[i])   // 剪枝
                 return;
 
             path.push_back(candidates[i]);
-            combine(candidates, i, remain - candidates[i], path);
+            combine(candidates, i + 1, remain - candidates[i], path);
             path.pop_back();
 
             while (i < candidates.size() && candidates[i+1] == candidates[i])  // 避免重复组合
