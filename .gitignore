@@ -33,3 +33,8 @@
 *.layout
 bin/
 obj/
+
+# IDEA Project
+.idea/
+*.iml
+*.class
