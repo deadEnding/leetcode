@@ -9,7 +9,7 @@ import java.util.List;
  * @author: deadend
  * @date: 10:35 AM 7/17/16
  * @version: 1.0
- * @description:
+ * @description: Leetcode 132. Palindrome Partitioning II
  */
 
 /* 动态规划，时间复杂度O(n^2) */
