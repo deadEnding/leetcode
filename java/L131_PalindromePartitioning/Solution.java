@@ -15,24 +15,19 @@ public class Solution {
     public List<List<String>> partition(String s) {
         int n = s.length();
         boolean[][] isPali =  new boolean[n][n];
+        List<List<String>>[] subParts = new List[n];
 
         for (int i = n - 1; i >= 0; i--) {
+            subParts[i] = new LinkedList<>();
             for (int j = i; j < n; j++) {
                 isPali[i][j] = (s.charAt(i) == s.charAt(j) && (j - i <= 1 || isPali[i+1][j-1]));
-            }
-        }
-
-        List<List<String>>[] subParts = new List[n];
-        for (int i = n - 1; i >= 0; i--) {
-            subParts[i] = new LinkedList<List<String>>();
-            for (int j = i; j < n; j++) {
                 if (isPali[i][j]) {
                     final String pali = s.substring(i, j + 1);
                     if (j + 1 < n) {
                         for (List<String> sub : subParts[j + 1]) {
                             subParts[i].add(new LinkedList<String>(sub) {{ add(0, pali);}});
                         }
-                    } else {  // j + 1 == n
+                    } else {  // j + 1 == n，即s[i:n-1]是回文串，不需要划分
                         subParts[i].add(new LinkedList<String>(){{ add(pali); }});
                     }
                 }

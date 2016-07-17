@@ -18,21 +18,16 @@ public class Solution {
     public int minCut(String s) {
         int n = s.length();
         boolean[][] isPali = new boolean[n][n];
+        int[] subMinCuts = new int[n];
 
         for (int i = n - 1; i >= 0; i--) {
+            subMinCuts[i] = n - 1 - i;
             for (int j = i; j < n; j++) {
                 isPali[i][j] = (s.charAt(i) == s.charAt(j) && (j - i <= 1 || isPali[i+1][j-1]));
-            }
-        }
-
-        int[] subMinCuts = new int[n];
-        Arrays.fill(subMinCuts, Integer.MAX_VALUE);
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = i; j < n; j++) {
                 if (isPali[i][j]) {
                     if (j + 1 < n) {
                         subMinCuts[i] = Math.min(subMinCuts[i], subMinCuts[j+1] + 1);
-                    } else {  // j + 1 == n
+                    } else {  // j + 1 == n，即s[i:n-1]是回文串，不需要划分
                         subMinCuts[i] = 0;
                     }
                 }
