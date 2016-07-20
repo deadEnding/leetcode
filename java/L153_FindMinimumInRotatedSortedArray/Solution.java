@@ -8,6 +8,7 @@ package L153_FindMinimumInRotatedSortedArray;
  */
 
 
+/* 保证最小值始终在nums[l:r]范围内 */
 public class Solution {
     public int findMin(int[] nums) {
         int l = 0;
