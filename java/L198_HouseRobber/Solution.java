@@ -27,7 +27,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution().rob(new int[] {2,1}));
+        System.out.println(new OtherSolution().rob(new int[] {1,1,1}));
     }
 }
 
@@ -44,14 +44,16 @@ class OtherSolution {
                 return Math.max(nums[0], nums[1]);
         }
 
-        int[] f = new int[n];
-        f[0] = nums[0];
-        f[1] = nums[1];
-        f[2] = f[0] + nums[2];
-        int max = Math.max(f[1], f[2]);
+        int g2 = nums[0];
+        int g1 = nums[1];
+        int g = nums[0] + nums[2];
+        int max = Math.max(g1, g);
         for (int i = 3; i < n; i++) {
-            f[i] = Math.max(f[i-3], f[i-2]) + nums[i];
-            max = Math.max(max, f[i]);
+            int tmp = g;
+            g = Math.max(g2, g1) + nums[i];
+            max = Math.max(max, g);
+            g2 = g1;
+            g1 = tmp;
         }
         return max;
     }
