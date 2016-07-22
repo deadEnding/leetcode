@@ -10,19 +10,17 @@ package L198_HouseRobber;
 
 public class Solution {
     public int rob(int[] nums) {
-        final int n = nums.length;
-        if (n == 0)
+        if (nums.length == 0)
             return 0;
-        if (n == 1)
-            return nums[0];
 
-        int prev = nums[0];
-        int curr = Math.max(nums[0], nums[1]);
-        for (int i  = 2; i < n; i++) {
+        int prev = 0;
+        int curr = nums[0];
+        for (int i = 1; i < nums.length; i++) {
             int tmp = curr;
             curr = Math.max(prev + nums[i], curr);
             prev = tmp;
         }
+
         return curr;
     }
 
@@ -40,15 +38,13 @@ class OtherSolution {
                 return 0;
             case 1:
                 return nums[0];
-            case 2:
-                return Math.max(nums[0], nums[1]);
         }
 
-        int g2 = nums[0];
-        int g1 = nums[1];
-        int g = nums[0] + nums[2];
+        int g2 = 0;
+        int g1 = nums[0];
+        int g = nums[1];
         int max = Math.max(g1, g);
-        for (int i = 3; i < n; i++) {
+        for (int i = 2; i < n; i++) {
             int tmp = g;
             g = Math.max(g2, g1) + nums[i];
             max = Math.max(max, g);
