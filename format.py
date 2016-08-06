@@ -10,4 +10,4 @@ if __name__ == '__main__':
 
     n, t, s = sys.argv
     fs = ''.join([i.capitalize() for i in s.split(' ')])
-    print fs if t == 'cpp' else 'L' + fs.replace('.', '_')
+    print fs if t == 'cpp' else 'L' + fs.replace('.', '_').replace('Iii', 'III').replace('Ii', 'II')
