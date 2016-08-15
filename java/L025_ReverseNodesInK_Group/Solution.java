@@ -55,11 +55,36 @@ public class Solution {
         }
         p.next = null;
 
-        p = new Solution().reverseKGroup(dummy.next, 3);
+        p = new OtherSolution().reverseKGroup(dummy.next, 3);
         while (p != null) {
             System.out.print(p.val + " ");
             p = p.next;
         }
         System.out.println();
+    }
+}
+
+
+class OtherSolution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode curr = head;
+        int count = 0;
+
+        while (curr != null && count != k) {
+            count++;
+            curr = curr.next;
+        }
+
+        if (count == k) {
+            curr = reverseKGroup(curr, k);
+            while (count-- > 0) {
+                ListNode tmp = head.next;
+                head.next = curr;
+                curr = head;
+                head = tmp;
+            }
+            head = curr;
+        }
+        return head;
     }
 }
