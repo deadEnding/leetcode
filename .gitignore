@@ -38,3 +38,6 @@ obj/
 .idea/
 *.iml
 *.class
+
+# No-use Folder
+test/
